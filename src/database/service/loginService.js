@@ -10,11 +10,11 @@ const validationLogin = async ({ email, password }) => {
   const result = await User.findOne({ where: { email } });
   if (!result) return { code: 400, message: 'Invalid fields' };
   if (result.dataValues.password !== password) return { code: 400, message: 'Invalid fields' };
-  
-  const token = jwt.sign({ data: email }, JWT_SECRET, { expires: '8h', algorithm: 'HS256' });
+
+  const token = jwt.sign({ data: email }, JWT_SECRET, { expiresIn: '8h', algorithm: 'HS256' });
   return { code: 200, token };
 };
-  
+
 module.exports = {
   validationLogin,
 };
