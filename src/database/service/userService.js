@@ -3,7 +3,7 @@ const { User } = require('../models');
 
 const { JWT_SECRET } = process.env;
 
-const validationUser = async (displayName, email, password, image) => {
+const createUser = async (displayName, email, password, image) => {
   if (displayName.length < 8) {
     return { code: 400, message: '"displayName" length must be at least 8 characters long' };
   }
@@ -36,7 +36,7 @@ const getById = async (id) => {
 };
 
 module.exports = {
-  validationUser,
+  createUser,
   getAll,
   getById,
 };
