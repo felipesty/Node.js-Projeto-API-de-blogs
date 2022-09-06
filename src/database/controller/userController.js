@@ -9,11 +9,19 @@ const createUser = async (req, res) => {
 };
 
 const getAll = async (_req, res) => {
-  const users = await userService.getAll();
-  return res.status(200).json(users);
+  const { user, code } = await userService.getAll();
+  return res.status(code).json(user);
+};
+
+const getById = async (req, res) => {
+  const { id } = req.params;
+  const { message, code, user } = await userService.getById(id);
+  if (message) return res.status(code).json({ message });
+  return res.status(code).json(user);
 };
 
 module.exports = {
   createUser,
   getAll,
+  getById,
 };

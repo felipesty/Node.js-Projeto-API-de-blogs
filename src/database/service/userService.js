@@ -26,10 +26,17 @@ const validationUser = async (displayName, email, password, image) => {
 
 const getAll = async () => {
   const user = await User.findAll({ attributes: { exclude: ['password'] } });
-  return user;
+  return { code: 200, user };
+};
+
+const getById = async (id) => {
+  const user = await User.findOne({ where: { id }, attributes: { exclude: ['password'] } });
+  if (!user) return { code: 404, message: 'User does not exist' };
+  return { code: 200, user };
 };
 
 module.exports = {
   validationUser,
   getAll,
+  getById,
 };
