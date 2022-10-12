@@ -1,6 +1,6 @@
 # Projeto API de blogs
 Mais um projeto utilizando o Node, mas dessa vez foi utilizando o sequelize para fazer os endpoints e também criar um token utilizando o Jwt.
-Com isso foram preciso fazer os seguintes requisitos:
+Com isso foi preciso fazer os seguintes requisitos:
    - Criar as migrations para as tabelas
    - Criar as models para cada tabela
    - POST /login
